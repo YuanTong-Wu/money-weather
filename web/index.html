@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="day">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>钱的天气 · Money Weather</title>
+  <meta name="description" content="像看天气预报一样，看全世界的钱往哪里流。">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f6f1e6">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='9' fill='%235895ab' stroke='%231f2a44' stroke-width='1.4'/%3E%3Cpath d='M2 14.6c4.4-2.4 9.6-3 15.4-1.6' fill='none' stroke='%23fbf8f1' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M2 14.6c4.4-2.4 9.6-3 15.4-1.6' fill='none' stroke='%231f2a44' stroke-width='1.1' stroke-linecap='round'/%3E%3C/svg%3E">
+  <script>
+    // theme before the first paint (default: day — warm paper). main.js keeps it in sync afterwards.
+    try { var t = JSON.parse(localStorage.getItem('mw.theme') || 'null'); if (t === 'night' || t === 'day') document.documentElement.dataset.theme = t; } catch (e) {}
+  </script>
+  <!-- three.js (vendored r170, DESIGN §22) for the 3D planet: bare "three" imports resolve here -->
+  <script type="importmap">
+  { "imports": { "three": "./vendor/three.module.min.js", "three/addons/": "./vendor/three-addons/" } }
+  </script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/stock.css">
+  <script src="vendor/d3.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</head>
+<body>
+  <!-- the planet: full-window canvas (planet.js keeps clear of the overlays via setInsets) -->
+  <canvas id="planet" aria-label="钱的天气图：每块地是一群股票，颜色是温度，风线是钱在流动"></canvas>
+
+  <header id="topbar"></header>
+  <div id="gauges" aria-label="大气层：恐慌指数、利率、美元"></div>
+  <div id="since" hidden></div>
+
+  <aside id="panel" aria-label="天气预报">
+    <button class="panel-toggle" type="button" title="收起 / 展开天气预报" aria-label="收起或展开天气预报"></button>
+    <div class="panel-scroll"></div>
+  </aside>
+
+  <div id="dock">
+    <div id="holdings" aria-label="我的持仓" hidden></div>
+    <div id="pins" aria-label="我的雷达" hidden></div>
+  </div>
+  <footer id="timebar" aria-label="时间机器"></footer>
+
+  <!-- the 主航道 when it is not a two-ended arc (main.js renderHero): a ring on the territory + one caption -->
+  <div id="hero-ring" class="hero-ring" hidden aria-hidden="true"></div>
+  <div id="hero-cap" class="hero-cap" hidden></div>
+
+  <div id="stock-root" hidden></div>
+  <div id="hovercard" role="tooltip"></div>
+  <div id="tour" hidden></div>
+  <div id="tutorial" hidden></div>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
+
+  <div id="loading">
+    <div class="loading-box">
+      <!-- Blender-rendered hero (art3d/illustrations.py); the inline SVG below stays as the fallback -->
+      <div class="loading-art" aria-hidden="true">
+        <img class="la-day" src="assets/3d/illustrations/hero_day_cut.webp" alt="" width="1600" height="1000" decoding="async" onload="this.parentNode.classList.add('ok')" onerror="this.remove()">
+        <img class="la-night" src="assets/3d/illustrations/hero_night_cut.webp" alt="" width="1600" height="1000" decoding="async" onload="this.parentNode.classList.add('ok')" onerror="this.remove()">
+      </div>
+      <svg class="loading-planet" viewBox="0 0 120 120" aria-hidden="true">
+        <defs><clipPath id="ld-clip"><circle cx="60" cy="60" r="40"/></clipPath>
+          <mask id="ld-mask"><rect width="120" height="120" fill="#fff"/><circle cx="51" cy="52" r="41" fill="#000"/></mask></defs>
+        <ellipse cx="62" cy="106" rx="30" ry="3.5" class="lp-drop"/>
+        <circle cx="60" cy="60" r="40" class="lp-body"/>
+        <g clip-path="url(#ld-clip)"><path d="M20 70 C40 58 52 76 72 64 S96 56 104 62 V110 H20Z" class="lp-land"/><rect width="120" height="120" mask="url(#ld-mask)" class="lp-shade"/></g>
+        <circle cx="60" cy="60" r="40" class="lp-outline"/>
+        <path d="M6 72c22-12 48-15 78-8" class="lp-wind-case"/><path d="M6 72c22-12 48-15 78-8" class="lp-wind"/>
+        <circle cx="85" cy="64.4" r="3" class="lp-head"/>
+      </svg>
+      <p class="loading-title">正在观测今天的天气…</p>
+    </div>
+  </div>
+  <noscript><p style="padding:24px">这张天气图需要打开 JavaScript。</p></noscript>
+</body>
+</html>

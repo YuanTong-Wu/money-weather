@@ -1,0 +1,12 @@
+# Optional: only for rebuilding real-data pipelines, not the synthetic demo.
+numpy
+pandas
+yfinance
+requests
+curl_cffi
+akshare
+pyarrow
+scipy
+opencc-python-reimplemented
+Unidecode
+Pillow

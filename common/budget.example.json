@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "unlimited": false,
+  "daily_weekly_pct": 1.0,
+  "auto_weekly_pct": 0.0,
+  "usd_per_weekly_pct": 1.0,
+  "calibrated": false,
+  "max_usd_per_call": 0.25,
+  "use_before_reset": {"enabled": false}
+}

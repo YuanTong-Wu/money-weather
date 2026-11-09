@@ -1,0 +1,78 @@
+{
+  "days": 64,
+  "desc": "【合成演示】全部地区、公司、价格、成交量和资金天气均为从零编写的数学样本。不是行情，不对应真实证券、用户持仓或真实资金；不代表预测或投资收益。",
+  "files": {
+    "README.md": {
+      "bytes": 1061,
+      "sha256": "5a85f8dbf6b001b4d953e6327c626562af46f1630989cd41ef07fe1470bd8332"
+    },
+    "brief.json": {
+      "bytes": 18889,
+      "sha256": "e5b97fbab3224dfef40cf1d52d0ebc1818fc7bdef239dd5cc13d157cd8b9e53a"
+    },
+    "demo-info.json": {
+      "bytes": 2626,
+      "sha256": "8ffea84e8977db71e914d63ac001bae40446ba3173b674a7a0ce9047e9220e0f"
+    },
+    "holdings.json": {
+      "bytes": 316,
+      "sha256": "f79d6ab743f491d7a4e1a0db92c9fca6f9090668cc9701fdeb8b46b79fad6c7b"
+    },
+    "maps/demo-dawn.json": {
+      "bytes": 27191,
+      "sha256": "458cfc5f7dc82f274aa605dc9e401173b174e52dff4844d93517184be561c66f"
+    },
+    "maps/demo-sand.json": {
+      "bytes": 27336,
+      "sha256": "f0567270acf55537af34ba421e937f17cd3a94c9a3c72b638d7a9a93133daa2a"
+    },
+    "maps/demo-tide.json": {
+      "bytes": 27207,
+      "sha256": "1e1dba0ac4829fa645d0269439299cd7c79f7427d1c0e1fc96389a767ac008e3"
+    },
+    "maps/world.json": {
+      "bytes": 36529,
+      "sha256": "1189383e34cbfc7f8dc87e126cc04c5f4a8def4d83de764a3f266cdf7e17ad41"
+    },
+    "meta.json": {
+      "bytes": 2476,
+      "sha256": "ae4f76325059c3c3cc5af9574650f765c5f1f1e2c8d9fdb4d9a6e6c433dca59e"
+    },
+    "search.json": {
+      "bytes": 7742,
+      "sha256": "fc74c517e9aad09f1f6f02f87c54a4677693ada35a671d55dd4f5af0e71c8961"
+    },
+    "stocks/FICTA.json": {
+      "bytes": 13734,
+      "sha256": "cbab20f38915d16b96003fc0a3abe540faae8a8b1162dbb65df9985eae63d80e"
+    },
+    "stocks/FICTB.json": {
+      "bytes": 13766,
+      "sha256": "d3675a4f8c8ddc7b274188385f6047080ca6295059b1d7396b8a21c5e2368d28"
+    },
+    "stocks/FICTC.json": {
+      "bytes": 13794,
+      "sha256": "9d38e571f9077c51ffa13b7ef4f96812958281f7c6cb7025fb0f7d71ede866d9"
+    },
+    "stocks/FICTD.json": {
+      "bytes": 13821,
+      "sha256": "db131a3bd8087e47f69e0eb8af87f47b398a53051440910fbc06e7cdc595632f"
+    },
+    "stocks/FICTE.json": {
+      "bytes": 13831,
+      "sha256": "a54c0ab869938d60be8513f3bc41452b8a44a334669e7993c4a4d6ba7c0713b5"
+    },
+    "stocks/FICTF.json": {
+      "bytes": 13801,
+      "sha256": "6afe6f3d10c865da112e9e763bd4e3c1d3070afe477e2c2176822808acc902f1"
+    },
+    "tree.json": {
+      "bytes": 9429,
+      "sha256": "3f595a54631ccd7e656d1cfccfa43e9f5ad679993c9e8d976e4fb0d7f99e8a54"
+    }
+  },
+  "generator": "scripts/create_demo.py",
+  "name": "【合成演示】可重复生成清单",
+  "note": "【合成演示】清单不对自身取摘要；不含时间戳、绝对路径或外部数据。",
+  "sample": true
+}

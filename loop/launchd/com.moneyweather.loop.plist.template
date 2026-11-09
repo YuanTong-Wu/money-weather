@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  钱的天气 · 心跳循环 — macOS launchd user agent (DESIGN.md §16). NOT installed automatically.
+  Fill in with:  python3 loop/runner.py --print-plist > ~/Library/LaunchAgents/com.moneyweather.loop.plist
+  Placeholders: __PYTHON__ __ROOT__ __HOME__ __PATH__ __HEARTBEAT__   (see loop/README.md)
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.moneyweather.loop</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>__PYTHON__</string>
+    <string>__ROOT__/loop/runner.py</string>
+    <string>--mode</string>
+    <string>launchd</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>__ROOT__</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>__PATH__</string>
+    <key>HOME</key>
+    <string>__HOME__</string>
+    <key>LANG</key>
+    <string>en_US.UTF-8</string>
+    <key>PYTHONUNBUFFERED</key>
+    <string>1</string>
+    <key>MW_HEARTBEAT_PATH</key>
+    <string>__HEARTBEAT__</string>
+  </dict>
+
+  <!-- start at login; restart only if it crashed (a clean stop stays stopped) -->
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <dict>
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+  <key>ThrottleInterval</key>
+  <integer>60</integer>
+
+  <key>ProcessType</key>
+  <string>Background</string>
+  <key>Nice</key>
+  <integer>5</integer>
+
+  <key>StandardOutPath</key>
+  <string>__ROOT__/loop/out/launchd.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>__ROOT__/loop/out/launchd.err.log</string>
+</dict>
+</plist>

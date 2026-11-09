@@ -1,0 +1,41 @@
+# Private settings, credentials and local accounts
+.env
+.env.*
+!.env.example
+.secrets/
+*.pem
+*.key
+common/budget.json
+loop/config.json
+scout/config.json
+why/config.json
+universe/holdings.json
+
+# Derived market data, research, ledgers and downloaded sources
+web/data/
+cache/
+**/cache/
+*.nosync/
+**/*.nosync/
+**/out/
+**/raw/
+**/store/
+**/*.pkl
+**/*.parquet
+**/*.log
+**/*.sqlite*
+**/*.db
+**/*.csv
+**/*.xlsx
+**/*.xls
+
+# Local tooling and caches
+.scratch/
+.omx/
+.tools/
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store

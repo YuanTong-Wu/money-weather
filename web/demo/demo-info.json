@@ -1,0 +1,42 @@
+{
+  "days": 64,
+  "desc": "【合成演示】全部地区、公司、价格、成交量和资金天气均为从零编写的数学样本。不是行情，不对应真实证券、用户持仓或真实资金；不代表预测或投资收益。",
+  "generatedBy": "scripts/create_demo.py",
+  "limitations": [
+    "【合成演示】不会生成真实资金、新闻、AI 回答、模型推演、预测命中率或回测成功记录。",
+    "【合成演示】浏览器的 2D/3D 共用地图契约；3D 渲染能力由浏览器决定，生成器不启动 UI。",
+    "【合成演示】现有前端有独立于 ?data= 的 /api/*、data/flows/* 与地理资源请求；本脚本不会改写或代理这些入口。",
+    "【合成演示】仅用静态服务器浏览本演示；若要求浏览器零 API 请求，需由父任务另行禁用按钮和轮询。",
+    "【合成演示】使用抽象地图模式；未提供真实总部、国家边界或地理数据。"
+  ],
+  "modelCallsByGenerator": 0,
+  "name": "【合成演示】演示数据契约与限制",
+  "networkRequestsByGenerator": 0,
+  "sample": true,
+  "schemas": {
+    "brief.json": "object: sample, asOf, headline, big[], inflow[], outflow[], fronts[], crowded[], quiet[], storms[], stocksIn[], stocksOut[], spotlight[], tour[]",
+    "facts": "sample, last, dv20, flow5, flow20, flow5Avg, ret1, ret5, ret20, ret60, high52:null, low52:null",
+    "maps/<id>.json": "object: sample, id, name, desc, dates[], self:series, children:{childId:series}",
+    "meta.json": "object: sample, name, desc, asOf, generatedAt, dates[], tags{}, atmosphere[], nStocks, nRegions",
+    "profile": "sample, est, basis, lo, hi, bins[], buy[], sell[] (24 fictional bins)",
+    "search.json": "array of {sample, id, name, desc, kind, ticker?, path:[names], pathIds:[ids]}",
+    "series": "sample, name, desc, wind[], temp[], pres[], storm[], front[], idx[], flow[], dv[]; every series has days rows",
+    "stocks/<ticker>.json": "object: sample, t, name, note, paths:[[ids]], dates[], o[], h[], l[], c[], v[], flow[], cumFlow[], wind[], temp[], pres[], storm[], front[], profile{}, peers:[s:T], facts{}, est{}",
+    "tree.json": "node: sample, id, name, desc, kind, depth, tags[], nStocks, now{}, children[] (non-stock nodes)"
+  },
+  "serve": "From web/: python3 -m http.server 8000 --bind 127.0.0.1 (static only; no server.py/update.sh).",
+  "sourceDataFilesReadByGenerator": [],
+  "tickers": [
+    "FICTA",
+    "FICTB",
+    "FICTC",
+    "FICTD",
+    "FICTE",
+    "FICTF"
+  ],
+  "urls": [
+    "/?data=demo#/world",
+    "/?data=demo#/world/demo-dawn",
+    "/?data=demo#/stock/FICTA"
+  ]
+}
